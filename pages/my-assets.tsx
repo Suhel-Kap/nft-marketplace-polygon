@@ -52,7 +52,7 @@ export default function MyAssets() {
                         image: meta.data.image,
                         name: meta.data.name,
                     }
-                    console.log(item)
+                    // console.log(item)
                     return item
                 }
             )
