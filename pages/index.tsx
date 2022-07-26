@@ -49,7 +49,7 @@ export default function Home() {
                         name: meta.data.name,
                         description: meta.data.description,
                     }
-                    console.log(item)
+//                     console.log(item)
                     return item
                 }
             )
