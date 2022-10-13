@@ -41,7 +41,7 @@ export default function MyAssets() {
                     seller: any
                     owner: any
                 }) => {
-                    const tokenUri = await tokenContract.tokenURI(i.tokenId)
+                    const tokenUri = (await tokenContract.tokenURI(i.tokenId)).replace("ipfs.infura", "infura-ipfs")
                     const meta = await axios.get(tokenUri)
                     let price = ethers.utils.formatUnits(i.price.toString(), "ether")
                     let item = {
@@ -49,7 +49,7 @@ export default function MyAssets() {
                         tokenId: i.tokenId.toNumber(),
                         seller: i.seller,
                         owner: i.owner,
-                        image: meta.data.image,
+                        image: (meta.data.image).replace("ipfs.infura", "infura-ipfs"),
                         name: meta.data.name,
                     }
                     // console.log(item)

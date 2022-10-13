@@ -39,7 +39,7 @@ export default function Home() {
                     seller: any
                     owner: any
                 }) => {
-                    const tokenUri = await tokenContract.tokenURI(i.tokenId)
+                    const tokenUri = (await tokenContract.tokenURI(i.tokenId)).replace("ipfs.infura", "infura-ipfs")
                     const meta = await axios.get(tokenUri)
                     let price = ethers.utils.formatUnits(i.price.toString(), "ether")
                     let item = {
@@ -47,11 +47,11 @@ export default function Home() {
                         tokenId: i.tokenId.toNumber(),
                         seller: i.seller,
                         owner: i.owner,
-                        image: meta.data.image,
+                        image: (meta.data.image).replace("ipfs.infura", "infura-ipfs"),
                         name: meta.data.name,
                         description: meta.data.description,
                     }
-                    // console.log(item)
+                    console.log(item)
                     return item
                 }
             )

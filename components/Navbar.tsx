@@ -5,7 +5,7 @@ import Link from "next/link"
 export default function Navbar() {
     return (
         <nav className="flex justify-between items-center border-b p-6 mb-3">
-            <h1 className="text-5xl font-bold">NFT Marketplace</h1>
+            <h1 className="text-5xl font-bold">Metaverse Marketplace</h1>
             <div className="flex mt-4">
                 <Link href={"/"}>
                     <a className="mr-6 text-fuchsia-500">Home</a>

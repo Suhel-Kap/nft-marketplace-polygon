@@ -40,6 +40,7 @@ export default function CreatorDashboard() {
         const tokenContract = new ethers.Contract(nftAddress, NFT.abi, signer)
         const marketContract = new ethers.Contract(nftMarketddress, NFTMarketplace.abi, signer)
         const data = await marketContract.itemsCreated()
+        console.log("data", data)
 
         const items: any[] = await Promise.all(
             data.map(
@@ -49,19 +50,21 @@ export default function CreatorDashboard() {
                     seller: any
                     owner: any
                 }) => {
-                    const tokenUri = await tokenContract.tokenURI(i.tokenId)
+                    const tokenUri = (await tokenContract.tokenURI(i.tokenId)).replace("ipfs.infura", "infura-ipfs")
+                    console.log("tokenUri", tokenUri)
                     const meta = await axios.get(tokenUri)
+                    console.log("meta", meta)
                     let price = ethers.utils.formatUnits(i.price.toString(), "ether")
                     let item = {
                         price,
                         tokenId: i.tokenId.toNumber(),
                         seller: i.seller,
                         owner: i.owner,
-                        image: meta.data.image,
+                        image: (meta.data.image).replace("ipfs.infura", "infura-ipfs"),
                         name: meta.data.name,
                         sold: meta.data.sold,
                     }
-                    // console.log(item)
+                    console.log(item)
                     return item
                 }
             )
