@@ -8,12 +8,13 @@ Connect your wallet to the web page, and you can list and purchase cool NFTs.
 
 This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
 
-Try running some of the following tasks:
+To run the program locally, first create a `.env` file based on the `.env.example` file. Then run the following commands:
 
 ```shell
-npx hardhat help
-npx hardhat test
-GAS_REPORT=true npx hardhat test
 npx hardhat node
-npx hardhat run scripts/deploy.ts
+npx hardhat run scripts/deploy.ts --network localhost
+
+yarn dev
+or
+npm run dev
 ```
